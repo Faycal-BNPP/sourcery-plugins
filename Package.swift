@@ -4,9 +4,15 @@ import PackageDescription
 let package = Package(
     name: "SourceryPlugins",
     products: [
-        .plugin(name: "SourceryCommand", targets: ["SourceryCommand"])
+        .plugin(name: "SourceryCommand", targets: ["SourceryCommand"]),
+        .plugin(name: "SourceryPlugins", targets: ["SourceryPlugins"])
     ],
     targets: [
+        .plugin(
+          name: "SourceryPlugins",
+          capability: .buildTool(),
+          dependencies: ["Sourcery"]
+        ),
         .plugin(
             name: "SourceryCommand",
             capability: .command(
